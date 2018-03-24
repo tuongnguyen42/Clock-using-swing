@@ -1,6 +1,9 @@
-import java.awt.*;
-import java.awt.event.*;
-import javax.swing.*;
+import java.awt.BorderLayout;
+import java.awt.FlowLayout;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
 
 /**
    This program implements an animation that moves
@@ -11,14 +14,15 @@ public class ClockTester
    public static void main(String[] args)
    {
       JFrame frame = new JFrame();
+      JPanel glass = (JPanel) frame.getGlassPane();
 
-      
       ClockFace icon = new ClockFace(0, 0, CLOCK_RADIUS);
       ClockHands hands = new ClockHands(CLOCK_RADIUS);
       
       frame.setLayout(new BorderLayout());
-      frame.add(hands, BorderLayout.CENTER);
       frame.add(icon, BorderLayout.CENTER);
+      frame.add(hands, BorderLayout.CENTER);
+
      
 
       

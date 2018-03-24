@@ -15,10 +15,10 @@ public class ClockHands extends JPanel implements MoveableShape {
 	
 	
 	ClockHands(int radius){
-		this.clockRadius = radius;
-		this.secLength = radius/2 - 50;
-		this.minLength = radius/2 -75;
-		this.hrLength = radius/2 -100;
+		clockRadius = radius;
+		secLength = radius/2 - 50;
+		minLength = radius/2 -75;
+		hrLength = radius/2 -100;
 	    this.setOpaque(true);
 	    this.setPreferredSize(new Dimension(radius, radius));
 
@@ -43,9 +43,9 @@ public class ClockHands extends JPanel implements MoveableShape {
 		
 
 		for(;;) {
-			this.currentSec = Calendar.getInstance().get(Calendar.SECOND);
-			this.currentMin = Calendar.getInstance().get(Calendar.MINUTE);
-			this.currentHr = Calendar.getInstance().get(Calendar.HOUR);
+			currentSec = Calendar.getInstance().get(Calendar.SECOND);
+			currentMin = Calendar.getInstance().get(Calendar.MINUTE);
+			currentHr = Calendar.getInstance().get(Calendar.HOUR);
 			translate();
 			g2.setColor(Color.GREEN);
 			g2.drawLine(clockRadius/2, clockRadius/2, xSec, ySec);
@@ -63,12 +63,12 @@ public class ClockHands extends JPanel implements MoveableShape {
 	@Override
 	public void translate() {
 		// TODO Auto-generated method stub
-		this.xSec = coor(currentSec,secLength).x;
-		this.ySec = coor(currentSec,secLength).y;
-		this.xMin = coor(currentMin,minLength).x;
-		this.yMin = coor(currentMin,minLength).y;
-		this.xHr = coor(currentHr,hrLength).x;
-		this.yHr = coor(currentHr,hrLength).y;
+		xSec = coor(currentSec,secLength).x;
+		ySec = coor(currentSec,secLength).y;
+		xMin = coor(currentMin,minLength).x;
+		yMin = coor(currentMin,minLength).y;
+		xHr = coor(currentHr,hrLength).x;
+		yHr = coor(currentHr,hrLength).y;
 		
 	}
 	

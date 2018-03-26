@@ -35,4 +35,4 @@ public class MyClock extends JPanel implements ActionListener{
 	}
 }
 
-/////zzzzz
+

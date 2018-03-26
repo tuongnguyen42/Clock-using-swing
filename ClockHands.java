@@ -1,3 +1,4 @@
+import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
@@ -16,10 +17,10 @@ public class ClockHands extends JPanel implements MoveableShape {
 	
 	ClockHands(int radius){
 		this.clockRadius = radius;
-		this.secLength = radius/2 - 50;
-		this.minLength = radius/2 -75;
-		this.hrLength = radius/2 -100;
-	    this.setOpaque(true);
+		this.secLength = radius/2 - 30;
+		this.minLength = radius/2 -50;
+		this.hrLength = radius/2 -85;
+	    this.setOpaque(false);
 	    this.setPreferredSize(new Dimension(radius, radius));
 
 	}
@@ -34,7 +35,9 @@ public class ClockHands extends JPanel implements MoveableShape {
 	public void paintComponent(Graphics g) {
 		Graphics2D g2 = (Graphics2D) g;
 		super.paintComponent(g2);
+		g2.setColor(Color.BLACK);
 		draw(g2);
+		
 	}
 	@Override
 	public void draw(Graphics2D g2) {
@@ -42,23 +45,53 @@ public class ClockHands extends JPanel implements MoveableShape {
 		
 		
 
-		for(;;) {
+
 			this.currentSec = Calendar.getInstance().get(Calendar.SECOND);
 			this.currentMin = Calendar.getInstance().get(Calendar.MINUTE);
 			this.currentHr = Calendar.getInstance().get(Calendar.HOUR);
 			translate();
-			g2.setColor(Color.GREEN);
+			g2.setColor(Color.RED);
+			g2.setStroke(new BasicStroke(1));
 			g2.drawLine(clockRadius/2, clockRadius/2, xSec, ySec);
+			g2.setColor(Color.BLACK);
+			g2.setStroke(new BasicStroke(5));
 			g2.drawLine(clockRadius/2, clockRadius/2, xMin, yMin);
+			g2.setColor(Color.BLACK);
+			g2.setStroke(new BasicStroke(5));
 			g2.drawLine(clockRadius/2, clockRadius/2, xHr, yHr);
 			repaint();
-			
 
-		}
+
 
 	
 		
 	}
+	
+	public void drawSecHand(Graphics2D g2) {
+		this.currentSec = Calendar.getInstance().get(Calendar.SECOND);
+		translate();
+		g2.setColor(Color.RED);
+		g2.setStroke(new BasicStroke(1));
+		g2.drawLine(clockRadius/2, clockRadius/2, xSec, ySec);
+	}
+	
+	public void drawMinHand(Graphics2D g2) {
+		translate();
+		g2.setColor(Color.BLACK);
+		g2.setStroke(new BasicStroke(5));
+		g2.drawLine(clockRadius/2, clockRadius/2, xMin, yMin);
+		repaint();
+	}
+	
+
+	public void drawHrHand(Graphics2D g2) {
+		g2.setColor(Color.BLACK);
+		g2.setStroke(new BasicStroke(5));
+		g2.drawLine(clockRadius/2, clockRadius/2, xHr, yHr);
+		repaint();
+	}
+	
+	
 
 	@Override
 	public void translate() {
@@ -67,8 +100,13 @@ public class ClockHands extends JPanel implements MoveableShape {
 		this.ySec = coor(currentSec,secLength).y;
 		this.xMin = coor(currentMin,minLength).x;
 		this.yMin = coor(currentMin,minLength).y;
-		this.xHr = coor(currentHr,hrLength).x;
-		this.yHr = coor(currentHr,hrLength).y;
+		this.xHr = coor(currentHr*5 + getRelativeHr(currentMin),hrLength).x;
+		this.yHr = coor(currentHr*5 + getRelativeHr(currentMin),+hrLength).y;
+		
+	}
+	
+	private int getRelativeHr(int min){
+		return min/12;
 		
 	}
 	

@@ -13,20 +13,21 @@ public class ClockTester
       JFrame frame = new JFrame();
 
       
-      ClockFace icon = new ClockFace(0, 0, CLOCK_RADIUS);
-      ClockHands hands = new ClockHands(CLOCK_RADIUS);
+      MyClock clock = new MyClock(CLOCK_RADIUS);
       
       frame.setLayout(new BorderLayout());
-      frame.add(hands, BorderLayout.CENTER);
-      frame.add(icon, BorderLayout.CENTER);
+      frame.add(clock, BorderLayout.CENTER);
+
      
+      
 
       
       JPanel topNav = new JPanel(new FlowLayout());
       topNav.add(new JButton("clock"));
       topNav.add(new JButton("stopwatch"));
       frame.add(topNav, BorderLayout.NORTH);
-      icon.repaint();
+      clock.repaint();
+ 
 
       frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
       frame.pack();

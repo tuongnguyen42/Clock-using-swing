@@ -6,8 +6,12 @@ import java.util.*;
 /**
    A Clock face
 */
+
+
+
 public class ClockFace extends JPanel
 {
+	
    /**
       Constructs a Clock
       @param x the left of the bounding rectangle
@@ -29,7 +33,7 @@ public class ClockFace extends JPanel
       y += dy;
    }
 
-   public void paintComponent(Graphics g)
+   public void draw(Graphics g)
    {
       Graphics2D g2 = (Graphics2D) g;
       super.paintComponent(g2);
@@ -40,7 +44,7 @@ public class ClockFace extends JPanel
       
       int r = width/2; //radius of clock
       int cX = x+(width)/2;
-      int cY = y+(width)/2;
+      int cY = y+(width)/2;					
       Stroke tickStroke = new BasicStroke(2f, BasicStroke.CAP_BUTT, BasicStroke.JOIN_ROUND, 1f);
      
       GeneralPath ticksPath = new GeneralPath();
@@ -89,6 +93,7 @@ public class ClockFace extends JPanel
       g2.setStroke(tickStroke);
       g2.draw(ticksPath);
       g2.setColor(Color.RED);
+      
 
       for ( int i=1; i<=12; i++){
          String numStr = ""+i;

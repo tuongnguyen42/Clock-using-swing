@@ -73,6 +73,7 @@ public class ClockHands extends JPanel implements MoveableShape {
 		g2.setColor(Color.RED);
 		g2.setStroke(new BasicStroke(1));
 		g2.drawLine(clockRadius/2, clockRadius/2, xSec, ySec);
+		repaint();
 	}
 	
 	public void drawMinHand(Graphics2D g2) {

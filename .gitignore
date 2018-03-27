@@ -3,3 +3,8 @@
 /ClockTester.class
 /MoveableShape.class
 /MyClock.class
+/StopWatchDial.class
+/MyStopWatch.class
+/StopWatchHand.class
+/ClockHand.class
+/MyStopWatch$TickTimerTask.class
